@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+// My Components
+import Swimlane from './components/Swimlane'
+
+type Column = {
+  columnTitle: string,
+  columnId: string
+}
+
+const App = () => {
+  const columns: Column[] = [
+    {"columnTitle": "To Do", "columnId": "todo"},
+    {"columnTitle": "In Progress", "columnId": "inprogress"},
+    {"columnTitle": "Done", "columnId": "done"},
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="title">
+        <h1>Simple Kanban Board</h1>
       </header>
+      <body>
+        <div className="container">
+          <Swimlane columns={columns}/>
+        </div>
+      </body>
     </div>
   );
 }
