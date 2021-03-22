@@ -107,6 +107,9 @@ form {
 .form-content input, .form-content textarea {
   border: 1px solid lightgray;
   border-radius: 5px;
+
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .form-content textarea {
