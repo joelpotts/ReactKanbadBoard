@@ -17,10 +17,12 @@ export default function AddCardForm({createTask, toggleDisplay}: {createTask: an
                 <button 
                     onClick={
                         () => {
-                            createTask(title, description);
-                            setTitle("");
-                            setDescription("");
-                            toggleDisplay();
+                            if(title) {
+                                createTask(title, description);
+                                setTitle("");
+                                setDescription("");
+                                toggleDisplay();
+                            }
                         }
                     }
                 >
