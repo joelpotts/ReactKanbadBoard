@@ -1,27 +1,32 @@
 import React, { useState } from 'react'
 
 
-export default function AddCardForm({createTask}: {createTask: any}) {
+export default function AddCardForm({createTask, toggleDisplay}: {createTask: any, toggleDisplay: any}) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState<string>("")
     return (
-        <div>
-            <h2>Create New Card</h2>
-            <form id="new-card-form">
-                <input type="text" name="title" id="card-title" value={title} onChange={(event) => setTitle(event.target.value)}/>
-                <textarea name="description" id="card-description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
-                <input 
-                    type="button"
-                    value="Create New Card"
+        <form id="new-card-form" action="#">
+            <div className="form-content">
+                <label htmlFor="card-title">Title:</label>
+                <input type="text" name="title" placeholder="Task title..." id="card-title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                <label htmlFor="card-description">Description:</label>
+                <textarea name="description" placeholder="Task description..." id="card-description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
+            </div>
+
+            <div id="form-buttons">
+                <button 
                     onClick={
                         () => {
                             createTask(title, description);
                             setTitle("");
                             setDescription("");
+                            toggleDisplay();
                         }
                     }
-                />
-            </form>
-        </div>
+                >
+                    Create New Task
+                </button>
+            </div>
+        </form>
     )
 }

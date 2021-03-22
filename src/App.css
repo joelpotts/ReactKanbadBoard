@@ -18,11 +18,98 @@
 }
 
 .kanban-column {
-  padding: 25px;
-  margin: 25px;
+  padding: 15px;
 
   width: 250px;
 
   border: 1px solid black;
   border-radius: 20px;
+}
+
+#create-card-button {
+  display: block;
+  margin-left: auto;
+}
+
+#modal-close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  border: none;
+  border-radius: 50%;
+
+  width: 25px;
+  height: 25px;
+
+  color: white;
+  background: black;
+}
+
+.modal {
+  /* Float in the center of the page */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Display content in a column  */
+  display:flex;
+  flex-direction: column;
+
+  /* Sizing and padding */
+  padding: 25px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 650px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+
+  /* Make the background opaque */
+  background: white;
+
+  z-index: 5;
+}
+
+.modal-grayout {
+  z-index: 4;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: gray;
+  opacity: 0.5;
+}
+
+.modal.closed, .modal-grayout.closed {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+  padding-bottom: 1em;
+}
+
+.form-content input, .form-content textarea {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.form-content textarea {
+  resize: none;
+  flex-grow: 1;
 }

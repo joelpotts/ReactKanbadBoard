@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Column from './Column'
 import AddCardForm from './AddCardForm'
+import Modal from './Modal'
 
 type ColumnData = {
     columnTitle: string,
@@ -32,6 +33,13 @@ const Swimlane = ({columns}: {columns: ColumnData[]}) => {
     );
 
     const [taskCount, setTaskCount] = useState<number>(1);
+
+    const [displayNewCard, setDisplayNewCard] = useState<boolean>(false);
+
+    const toggleNewCardModal = () => {
+        setDisplayNewCard(!displayNewCard);
+        console.log("New visibility is: ", displayNewCard);
+    }
 
     const createTask = (title: string, description: string) => {
         console.log("Current task count: ", taskCount);
@@ -91,12 +99,16 @@ const Swimlane = ({columns}: {columns: ColumnData[]}) => {
 
     return (
         <>
+            <button id="create-card-button" onClick={toggleNewCardModal}>Create New Task</button>
             <div className="kanban-swimlane">
                 {columns.map( (column) =>
                     <Column columnName={column.columnTitle} tasks={tasks.filter( task => task.column === column.columnId)} advanceTask={advanceTask} regressTask={regressTask}/>
                 )}
             </div>
-            <AddCardForm createTask={createTask}/>
+            <Modal visible={displayNewCard} toggleDisplay={toggleNewCardModal}>
+                <h2 className="title">Create New Task</h2>
+                <AddCardForm createTask={createTask} toggleDisplay={toggleNewCardModal}/>
+            </Modal>
         </>
     )
 }
