@@ -1,3 +1,15 @@
+# Simple Kanban Board
+
+This small project was undertaking to practice with React and Typescript. Additionally, rather than using Bootstrap or another CSS framework, I decided to style everything from scratch to practice CSS.
+
+I tried to keep the scope of the project quite narrow, so true to the name "Simple Kanban Board", there is only limited functionality.
+
+- A single swimlane with three columns: To Do, In Progress, and Done
+- Cards only have a "Title" and "Description" field.
+- Cards can be moved between columns (using buttons, rather than drag and drop, for simplicity).
+- New cards can be created
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
